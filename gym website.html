@@ -1,715 +1,105 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FITZONE | Fitness Center</title>
-
+<title>FITZONE</title>
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: #101010;
-    color: white;
-    line-height: 1.6;
-}
-
-:root {
-    --orange: #ff5a1f;
-    --dark: #101010;
-    --light: #eeeeee;
-}
-
-header {
-    background: #181818;
-    padding: 18px 6%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-.logo {
-    color: var(--orange);
-    font-size: 28px;
-    font-weight: 900;
-    letter-spacing: 2px;
-}
-
-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 18px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: var(--orange);
-}
-
-/* Hero Section */
-.hero {
-    min-height: 430px;
-    padding: 90px 8%;
-    display: flex;
-    align-items: center;
-    background:
-        linear-gradient(90deg, #000000e8, #00000070),
-        url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80");
-    background-size: cover;
-    background-position: center;
-}
-
-.hero-content {
-    max-width: 650px;
-}
-
-.hero h1 {
-    font-size: clamp(40px, 7vw, 72px);
-    line-height: 1.1;
-    font-weight: 900;
-    margin-bottom: 20px;
-}
-
-.hero h1 span {
-    color: var(--orange);
-}
-
-.hero p {
-    font-size: 18px;
-    color: #dddddd;
-    margin-bottom: 25px;
-}
-
-.btn {
-    display: inline-block;
-    background: var(--orange);
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-}
-
-.btn:hover {
-    background: #e6410b;
-    transform: translateY(-3px);
-}
-
-/* General Sections */
-section {
-    padding: 65px 7%;
-    scroll-margin-top: 75px;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 34px;
-    font-weight: 900;
-    margin-bottom: 12px;
-    text-transform: uppercase;
-}
-
-.section-title span {
-    color: var(--orange);
-}
-
-.subtitle {
-    text-align: center;
-    color: #bbbbbb;
-    margin-bottom: 35px;
-}
-
-/* Workout Programs */
-.programs {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-}
-
-.program-card {
-    background: #202020;
-    padding: 28px;
-    border-bottom: 4px solid var(--orange);
-    border-radius: 8px;
-    transition: transform 0.3s, background 0.3s;
-}
-
-.program-card:hover {
-    transform: translateY(-7px);
-    background: #292929;
-}
-
-.program-card .icon {
-    font-size: 42px;
-}
-
-.program-card h3 {
-    color: var(--orange);
-    margin: 12px 0;
-    font-size: 23px;
-}
-
-/* Trainers */
-.trainers {
-    background: #181818;
-}
-
-.trainer-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-}
-
-.trainer-card {
-    background: #252525;
-    text-align: center;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s;
-}
-
-.trainer-card:hover {
-    transform: scale(1.03);
-}
-
-.trainer-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    display: block;
-}
-
-.trainer-info {
-    padding: 20px;
-}
-
-.trainer-info h3 {
-    color: var(--orange);
-}
-
-/* Facilities */
-.facilities-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-}
-
-.facility {
-    background: #202020;
-    padding: 25px 12px;
-    text-align: center;
-    border-radius: 8px;
-    transition: background 0.3s;
-}
-
-.facility:hover {
-    background: #383838;
-}
-
-.facility div {
-    font-size: 35px;
-}
-
-.facility h3 {
-    margin-top: 10px;
-}
-
-/* Membership Plans */
-.plans {
-    background: #181818;
-}
-
-.pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-}
-
-.price-card {
-    background: #252525;
-    text-align: center;
-    padding: 30px 20px;
-    border-radius: 10px;
-    border: 1px solid #444;
-    transition: transform 0.3s, border-color 0.3s;
-}
-
-.price-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--orange);
-}
-
-.price-card.featured {
-    border: 2px solid var(--orange);
-}
-
-.price-card h3 {
-    font-size: 24px;
-    color: var(--orange);
-}
-
-.price {
-    font-size: 32px;
-    font-weight: 900;
-    margin: 15px 0;
-}
-
-.price span {
-    font-size: 14px;
-    color: #bbbbbb;
-    font-weight: normal;
-}
-
-.price-card ul {
-    list-style: none;
-    margin: 20px 0;
-}
-
-.price-card li {
-    padding: 7px;
-    border-bottom: 1px solid #414141;
-}
-
-/* Class Schedule */
-.table-wrap {
-    overflow-x: auto;
-    background: #202020;
-    border-radius: 8px;
-}
-
-table {
-    width: 100%;
-    min-width: 550px;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid #444;
-}
-
-th {
-    background: var(--orange);
-    color: white;
-}
-
-tr:hover td {
-    background: #292929;
-}
-
-/* Registration Form */
-.registration {
-    background: #181818;
-}
-
-.form-box {
-    max-width: 650px;
-    margin: auto;
-    background: #252525;
-    padding: 30px;
-    border-radius: 10px;
-}
-
-.form-box label {
-    display: block;
-    margin: 12px 0 5px;
-    font-weight: bold;
-}
-
-.form-box input,
-.form-box select,
-.form-box textarea {
-    width: 100%;
-    padding: 12px;
-    border-radius: 5px;
-    border: 1px solid #555;
-    background: #111;
-    color: white;
-    font: inherit;
-}
-
-.form-box input:focus,
-.form-box select:focus,
-.form-box textarea:focus {
-    outline: 2px solid var(--orange);
-}
-
-.form-box button {
-    margin-top: 20px;
-    width: 100%;
-    font-size: 16px;
-}
-
-#message {
-    margin-top: 15px;
-    color: #86efac;
-    text-align: center;
-}
-
-/* Footer */
-footer {
-    padding: 25px;
-    text-align: center;
-    background: #080808;
-    color: #bbbbbb;
-}
-
-footer span {
-    color: var(--orange);
-}
-
-/* Responsive Layout */
-@media (max-width: 900px) {
-    .programs,
-    .trainer-grid,
-    .pricing-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .facilities-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    header {
-        justify-content: center;
-    }
-
-    nav {
-        justify-content: center;
-        gap: 12px;
-    }
-
-    .hero {
-        padding: 65px 6%;
-    }
-
-    section {
-        padding: 45px 5%;
-    }
-
-    .programs,
-    .trainer-grid,
-    .pricing-grid,
-    .facilities-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .section-title {
-        font-size: 28px;
-    }
-
-    .form-box {
-        padding: 20px;
-    }
-}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#101010;color:#fff}
+:root{--o:#ff5a1f}
+header{background:#181818;padding:15px 6%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10;flex-wrap:wrap;gap:10px}
+.logo{color:var(--o);font-size:26px;font-weight:900}
+nav{display:flex;gap:15px;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;font-weight:bold}
+nav a:hover{color:var(--o)}
+.hero{min-height:400px;padding:80px 7%;display:flex;align-items:center;background:linear-gradient(90deg,#000000e6,#00000070),url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80") center/cover}
+.hero h1{font-size:55px;line-height:1.1;font-weight:900}
+.hero h1 span{color:var(--o)}
+.hero p{margin:15px 0 20px;color:#ddd}
+.btn{display:inline-block;background:var(--o);color:#fff;padding:10px 22px;border-radius:5px;text-decoration:none;font-weight:bold}
+section{padding:50px 6%}
+.title{text-align:center;font-size:32px;font-weight:900;margin-bottom:30px}
+.title span{color:var(--o)}
+.grid{display:grid;gap:20px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:#202020;padding:20px;border-radius:8px;text-align:center}
+.card h3{color:var(--o);margin:10px 0}
+.trainers,.plans,.register{background:#181818}
+.price-card{border:1px solid #444}
+.price-card.featured{border:2px solid var(--o)}
+.price{font-size:28px;font-weight:900;margin:10px 0}
+table{width:100%;border-collapse:collapse;background:#202020;border-radius:8px;overflow:hidden}
+th,td{padding:12px;text-align:center;border-bottom:1px solid #333}
+th{background:var(--o)}
+.form{max-width:600px;margin:auto;background:#252525;padding:25px;border-radius:10px}
+.form input,.form select,.form textarea{width:100%;padding:10px;margin:5px 0 12px;border-radius:5px;border:1px solid #555;background:#111;color:#fff}
+.form button{width:100%;border:none;cursor:pointer}
+footer{text-align:center;padding:20px;background:#080808;color:#aaa}
+footer span{color:var(--o)}
+@media(max-width:800px){.g3,.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:550px){.g3,.g4{grid-template-columns:1fr} .hero h1{font-size:36px}}
 </style>
 </head>
-
 <body>
 
-<!-- Navigation -->
 <header>
-    <div class="logo">FITZONE</div>
-
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#programs">Programs</a>
-        <a href="#trainers">Trainers</a>
-        <a href="#facilities">Facilities</a>
-        <a href="#plans">Plans</a>
-        <a href="#schedule">Schedule</a>
-        <a href="#register">Join Us</a>
-    </nav>
+<div class="logo">FITZONE</div>
+<nav>
+<a href="#home">Home</a><a href="#programs">Programs</a><a href="#trainers">Trainers</a><a href="#plans">Plans</a><a href="#register">Join</a>
+</nav>
 </header>
 
-<!-- Hero Section -->
 <section class="hero" id="home">
-    <div class="hero-content">
-        <h1>BUILD YOUR<br><span>STRONGER</span> SELF</h1>
-        <p>
-            Train with purpose. Build healthy habits.
-            Start your fitness journey at FITZONE.
-        </p>
-        <a href="#plans" class="btn">Explore Memberships</a>
-    </div>
+<div>
+<h1>BUILD YOUR<br><span>STRONGER</span> SELF</h1>
+<p>Train with purpose. Start your journey at FITZONE.</p>
+<a href="#plans" class="btn">Explore Plans</a>
+</div>
 </section>
 
-<!-- Workout Programs -->
 <section id="programs">
-    <h2 class="section-title">Workout <span>Programs</span></h2>
-    <p class="subtitle">Choose a program that matches your fitness goals.</p>
-
-    <div class="programs">
-        <div class="program-card">
-            <div class="icon">🏋️</div>
-            <h3>Strength Training</h3>
-            <p>Learn resistance exercises and build strength with suitable guidance.</p>
-        </div>
-
-        <div class="program-card">
-            <div class="icon">🏃</div>
-            <h3>Cardio Fitness</h3>
-            <p>Improve cardiovascular fitness with appropriate cardio activities.</p>
-        </div>
-
-        <div class="program-card">
-            <div class="icon">🧘</div>
-            <h3>Yoga & Flexibility</h3>
-            <p>Practice guided movements, flexibility, and relaxation techniques.</p>
-        </div>
-    </div>
+<h2 class="title">Workout <span>Programs</span></h2>
+<div class="grid g3">
+<div class="card"><h3>🏋️ Strength</h3><p>Resistance training with guidance.</p></div>
+<div class="card"><h3>🏃 Cardio</h3><p>Improve fitness with cardio activities.</p></div>
+<div class="card"><h3>🧘 Yoga</h3><p>Flexibility and relaxation techniques.</p></div>
+</div>
 </section>
 
-<!-- Trainers -->
 <section class="trainers" id="trainers">
-    <h2 class="section-title">Meet Our <span>Trainers</span></h2>
-    <p class="subtitle">Get support from our sample trainer team.</p>
-
-    <div class="trainer-grid">
-        <div class="trainer-card">
-            <img
-                src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=600&q=80"
-                alt="Fitness trainer"
-                loading="lazy">
-            <div class="trainer-info">
-                <h3>Arjun Kumar</h3>
-                <p>Strength Training</p>
-            </div>
-        </div>
-
-        <div class="trainer-card">
-            <img
-                src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80"
-                alt="Personal fitness trainer"
-                loading="lazy">
-            <div class="trainer-info">
-                <h3>Rahul Sharma</h3>
-                <p>Cardio & Fitness</p>
-            </div>
-        </div>
-
-        <div class="trainer-card">
-            <img
-                src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80"
-                alt="Yoga instructor"
-                loading="lazy">
-            <div class="trainer-info">
-                <h3>Ananya Rao</h3>
-                <p>Yoga & Flexibility</p>
-            </div>
-        </div>
-    </div>
+<h2 class="title">Our <span>Trainers</span></h2>
+<div class="grid g3">
+<div class="card"><h3>Arjun Kumar</h3><p>Strength Training</p></div>
+<div class="card"><h3>Rahul Sharma</h3><p>Cardio & Fitness</p></div>
+<div class="card"><h3>Ananya Rao</h3><p>Yoga & Flexibility</p></div>
+</div>
 </section>
 
-<!-- Facilities -->
-<section id="facilities">
-    <h2 class="section-title">Our <span>Facilities</span></h2>
-    <p class="subtitle">Spaces and equipment for different fitness activities.</p>
-
-    <div class="facilities-grid">
-        <div class="facility">
-            <div>🏋️</div>
-            <h3>Weight Area</h3>
-            <p>Strength equipment</p>
-        </div>
-
-        <div class="facility">
-            <div>🚴</div>
-            <h3>Cardio Zone</h3>
-            <p>Cardio machines</p>
-        </div>
-
-        <div class="facility">
-            <div>🚿</div>
-            <h3>Changing Rooms</h3>
-            <p>Member facilities</p>
-        </div>
-
-        <div class="facility">
-            <div>🧘</div>
-            <h3>Yoga Studio</h3>
-            <p>Group practice space</p>
-        </div>
-    </div>
-</section>
-
-<!-- Membership Plans -->
 <section class="plans" id="plans">
-    <h2 class="section-title">Membership <span>Plans</span></h2>
-    <p class="subtitle">Sample plans for this website demonstration.</p>
-
-    <div class="pricing-grid">
-        <div class="price-card">
-            <h3>Basic</h3>
-            <p class="price">₹999 <span>/ month</span></p>
-            <ul>
-                <li>Gym access</li>
-                <li>Basic equipment</li>
-                <li>Locker access</li>
-                <li>Group workout sessions</li>
-            </ul>
-            <a href="#register" class="btn">Choose Basic</a>
-        </div>
-
-        <div class="price-card featured">
-            <h3>Premium</h3>
-            <p class="price">₹1,999 <span>/ month</span></p>
-            <ul>
-                <li>All Basic benefits</li>
-                <li>Trainer guidance</li>
-                <li>Yoga classes</li>
-                <li>Fitness progress review</li>
-            </ul>
-            <a href="#register" class="btn">Choose Premium</a>
-        </div>
-
-        <div class="price-card">
-            <h3>Annual</h3>
-            <p class="price">₹14,999 <span>/ year</span></p>
-            <ul>
-                <li>Gym access</li>
-                <li>Group classes</li>
-                <li>Trainer consultation</li>
-                <li>Member benefits</li>
-            </ul>
-            <a href="#register" class="btn">Choose Annual</a>
-        </div>
-    </div>
+<h2 class="title">Membership <span>Plans</span></h2>
+<div class="grid g3">
+<div class="card price-card"><h3>Basic</h3><p class="price">₹999/m</p><p>Gym + Locker + Group Sessions</p><br><a href="#register" class="btn">Choose</a></div>
+<div class="card price-card featured"><h3>Premium</h3><p class="price">₹1999/m</p><p>All Basic + Trainer + Yoga</p><br><a href="#register" class="btn">Choose</a></div>
+<div class="card price-card"><h3>Annual</h3><p class="price">₹14999/y</p><p>Gym + Classes + Consultation</p><br><a href="#register" class="btn">Choose</a></div>
+</div>
 </section>
 
-<!-- Class Schedule -->
-<section id="schedule">
-    <h2 class="section-title">Class <span>Schedule</span></h2>
-    <p class="subtitle">Example weekly class timetable.</p>
-
-    <div class="table-wrap">
-        <table>
-            <thead>
-                <tr>
-                    <th>Day</th>
-                    <th>Class</th>
-                    <th>Time</th>
-                    <th>Trainer</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Monday</td>
-                    <td>Strength Training</td>
-                    <td>7:00 AM</td>
-                    <td>Arjun</td>
-                </tr>
-                <tr>
-                    <td>Tuesday</td>
-                    <td>Cardio Fitness</td>
-                    <td>6:00 PM</td>
-                    <td>Rahul</td>
-                </tr>
-                <tr>
-                    <td>Wednesday</td>
-                    <td>Yoga</td>
-                    <td>7:30 AM</td>
-                    <td>Ananya</td>
-                </tr>
-                <tr>
-                    <td>Thursday</td>
-                    <td>Strength Training</td>
-                    <td>6:00 PM</td>
-                    <td>Arjun</td>
-                </tr>
-                <tr>
-                    <td>Friday</td>
-                    <td>Cardio Fitness</td>
-                    <td>7:00 AM</td>
-                    <td>Rahul</td>
-                </tr>
-                <tr>
-                    <td>Saturday</td>
-                    <td>Yoga & Flexibility</td>
-                    <td>8:00 AM</td>
-                    <td>Ananya</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<section class="register" id="register">
+<h2 class="title">Join <span>FITZONE</span></h2>
+<form class="form">
+<input type="text" placeholder="Full Name" required>
+<input type="email" placeholder="Email" required>
+<input type="tel" placeholder="Phone (10 digits)" pattern="[0-9]{10}" required>
+<select required><option value="">Select Plan</option><option>Basic - ₹999</option><option>Premium - ₹1999</option><option>Annual - ₹14999</option></select>
+<select required><option value="">Fitness Goal</option><option>General fitness</option><option>Strength</option><option>Cardio</option></select>
+<textarea rows="3" placeholder="Any questions?"></textarea>
+<button class="btn" type="submit">Submit</button>
+</form>
 </section>
 
-<!-- Registration Form -->
-<section class="registration" id="register">
-    <h2 class="section-title">Join <span>FITZONE</span></h2>
-    <p class="subtitle">Fill in the form to submit a demo membership enquiry.</p>
-
-    <form class="form-box" id="registrationForm">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name"
-               placeholder="Enter your full name" required>
-
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email"
-               placeholder="Enter your email" required>
-
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone"
-               placeholder="Enter your phone number"
-               pattern="[0-9]{10}"
-               title="Enter a 10-digit phone number" required>
-
-        <label for="plan">Choose Membership</label>
-        <select id="plan" name="plan" required>
-            <option value="">Select a plan</option>
-            <option value="Basic">Basic - ₹999/month</option>
-            <option value="Premium">Premium - ₹1,999/month</option>
-            <option value="Annual">Annual - ₹14,999/year</option>
-        </select>
-
-        <label for="goal">Fitness Goal</label>
-        <select id="goal" name="goal" required>
-            <option value="">Select your goal</option>
-            <option value="General fitness">General fitness</option>
-            <option value="Strength">Strength training</option>
-            <option value="Cardio">Cardio fitness</option>
-            <option value="Flexibility">Flexibility</option>
-        </select>
-
-        <label for="messageBox">Additional Message</label>
-        <textarea id="messageBox" name="message"
-                  rows="3" placeholder="Any questions?"></textarea>
-
-        <button type="submit" class="btn">Submit Registration</button>
-        <p id="message" role="status"></p>
-    </form>
-</section>
-
-<!-- Footer -->
-<footer>
-    <p><span>FITZONE</span> | Fitness for Every Journey</p>
-    <p>© 2026 FITZONE. Student Web Development Project.</p>
-</footer>
-
+<footer><p><span>FITZONE</span> | Fitness for Every Journey<br>© 2026 Student Project</p></footer>
 
 </body>
 </html>
