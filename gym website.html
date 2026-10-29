@@ -710,20 +710,6 @@ footer span {
     <p>© 2026 FITZONE. Student Web Development Project.</p>
 </footer>
 
-<script>
-document.getElementById("registrationForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const plan = document.getElementById("plan").value;
-
-    document.getElementById("message").textContent =
-        "Thank you, " + name + "! Your " + plan +
-        " membership enquiry has been recorded in this demo.";
-
-    this.reset();
-});
-</script>
 
 </body>
 </html>
